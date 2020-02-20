@@ -8795,3 +8795,16 @@ h1[id*=toc-head]::before,h2[id*=toc-head]::before,h3[id*=toc-head]::before,h4[id
         display: none;
     }
 }
+
+/*赞赏页表格*/
+summary:hover {
+	background:#ccc;
+}
+summary {
+	padding:5px 10px;
+	border:1px solid #e8e8e8;
+	background:#f5f5f5;
+	color:#111;
+	border-radius:3px;
+	outline:0;
+}
