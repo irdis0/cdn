@@ -8651,6 +8651,17 @@ h1[id*=toc-head]::before,h2[id*=toc-head]::before,h3[id*=toc-head]::before,h4[id
 }
 
 /* 文字LOGO样式 */
+@font-face {
+    font-family: "miao";
+    src: url("https://cdn.jsdelivr.net/gh/Fog-Forest/cdn@1.9.4/Sakura/LOGO/miao.eot"); /* IE9 */
+    src: url("https://cdn.jsdelivr.net/gh/Fog-Forest/cdn@1.9.4/Sakura/LOGO/miao.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */  
+    url("https://cdn.jsdelivr.net/gh/Fog-Forest/cdn@1.9.4/Sakura/LOGO/miao.woff") format("woff"), /* chrome、firefox */
+    url("https://cdn.jsdelivr.net/gh/Fog-Forest/cdn@1.9.4/Sakura/LOGO/miao.ttf") format("truetype"), /* chrome、firefox、opera、Safari, Android, iOS 4.2+ */
+    url("https://cdn.jsdelivr.net/gh/Fog-Forest/cdn@1.9.4/Sakura/LOGO/miao.svg#miao") format("svg"); /* iOS 4.1- */
+    font-style: normal;
+    font-weight: normal;
+}
+
 .miao {
 	font-family: 'miao','Merriweather Sans',Helvetica,Tahoma,Arial,'PingFang SC','Hiragino Sans GB','Microsoft Yahei','WenQuanYi Micro Hei',sans-serif;
 }
