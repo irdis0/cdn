@@ -3844,7 +3844,7 @@ if ((isWebkit || isOpera || isIe) && document.getElementById && window.addEventL
     }, false);
 }
 
-/*诗*/
+/* 诗 */
 function get_poem(poem_ele, info_ele) {
     var poem = document.querySelector(poem_ele);
     var info = document.querySelector(info_ele);
@@ -3861,7 +3861,7 @@ function get_poem(poem_ele, info_ele) {
     xhr.send();
 }
 
-/*BotUI*/
+/* BotUI */
 if ($("div").hasClass("popcontainer")) {
 	loadBotui()
 }
@@ -3881,4 +3881,13 @@ function loadBotui() {
 			})
 		}
 	}
+}
+
+/* 首页下拉箭头 */
+function headertop_down() {
+	var coverOffset = $('#content').offset().top;
+	$('html,body').animate({
+		scrollTop: coverOffset
+	},
+	600);
 }
