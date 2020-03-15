@@ -7881,6 +7881,7 @@ a.toc-link {
 .top-feature-row {
     width: 100%;
     height: auto;
+	font-family: Noto Serif SC;
     margin-top: 55px
 }
 
@@ -8283,7 +8284,7 @@ td.hljs-ln-numbers {
 }
 
 .serif {
-    font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Source Han Serif', source-han-serif-sc, 'PT Serif', 'SongTi SC', 'MicroSoft Yahei', Georgia, serif
+    font-family: 'zhanku', 'Noto Serif SC', 'Source Han Serif SC', 'Source Han Serif', source-han-serif-sc, 'PT Serif', 'SongTi SC', 'MicroSoft Yahei', Georgia, serif
 }
 
 @media (max-width:860px) {
@@ -8682,6 +8683,18 @@ h1[id*=toc-head]::before,h2[id*=toc-head]::before,h3[id*=toc-head]::before,h4[id
     -ms-transform: scale(1.5,1); /* IE 9 */
     -webkit-transform: scale(1.5,1); /* Safari */
     transform: scale(1.5,1); /* Standard syntax */
+}
+
+/* 全站字体样式 8285行+'zhanku', | 7881行+font-family: Noto Serif SC;*/
+@font-face {
+    font-family: "zhanku";
+    src: url("https://cdn.jsdelivr.net/gh/Fog-Forest/cdn@2.0.1/Sakura/fonts/zhanku/zhanku.eot"); /* IE9 */
+    src: url("https://cdn.jsdelivr.net/gh/Fog-Forest/cdn@2.0.1/Sakura/fonts/zhanku/zhanku.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */  
+    url("https://cdn.jsdelivr.net/gh/Fog-Forest/cdn@2.0.1/Sakura/fonts/zhanku/zhanku.woff") format("woff"), /* chrome、firefox */
+    url("https://cdn.jsdelivr.net/gh/Fog-Forest/cdn@2.0.1/Sakura/fonts/zhanku/zhanku.ttf") format("truetype"), /* chrome、firefox、opera、Safari, Android, iOS 4.2+ */
+    url("https://cdn.jsdelivr.net/gh/Fog-Forest/cdn@2.0.1/Sakura/fonts/zhanku/zhanku.svg#zhanku") format("svg"); /* iOS 4.1- */
+    font-style: normal;
+    font-weight: normal;
 }
 
 /* 文字LOGO样式 */
