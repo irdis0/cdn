@@ -17,6 +17,10 @@ mashiro_global.ini = new function () {
 		if ($("div").hasClass("poem-wrap")) {
 			get_poem('#poem', '#info')
 		}
+		//一言初加载
+		if ($("span").hasClass("hitokoto")) {
+			hitokoto()
+		}
 		//标题触动音乐初加载
 		web_audio();
         coverVideoIni();
@@ -31,6 +35,10 @@ mashiro_global.ini = new function () {
 		//诗重载
 		if ($("div").hasClass("poem-wrap")) {
 			get_poem('#poem', '#info')
+		}
+		//一言重载
+		if ($("span").hasClass("hitokoto")) {
+			hitokoto()
 		}
 		//BotUI重载
 		if ($("div").hasClass("popcontainer")) {
@@ -3863,6 +3871,20 @@ function get_poem(poem_ele, info_ele) {
         }
     };
     xhr.send();
+}
+
+/* 一言 */
+function hitokoto() {
+		var xhr = new XMLHttpRequest();
+		xhr.open('get', 'https://v1.hitokoto.cn?c=a');
+		xhr.onreadystatechange = function () {
+		if (xhr.readyState === 4) {
+			var data = JSON.parse(xhr.responseText);
+			var hitokoto = document.getElementById('hitokoto');
+			hitokoto.innerText = data.hitokoto;
+		}
+	}
+	xhr.send();
 }
 
 /* BotUI */
