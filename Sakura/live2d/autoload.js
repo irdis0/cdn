@@ -1,6 +1,6 @@
 // 注意：live2d_path 参数应使用绝对路径，记得修改哦
-const live2d_path = "https://cdn.jsdelivr.net/gh/Fog-Forest/cdn@2.0.0/Sakura/live2d-js/";
-const tips_path = "https://cdn.jsdelivr.net/gh/Fog-Forest/cdn@2.0.0/Sakura/live2d-js/";
+const live2d_path = "https://cdn.jsdelivr.net/gh/Fog-Forest/cdn@2.0.4/Sakura/live2d/";
+const tips_path = "https://cdn.jsdelivr.net/gh/Fog-Forest/cdn@2.0.4/Sakura/live2d/";
 //const live2d_path = "";
 //const live2d_path = "/live2d-widget/";
 
@@ -34,7 +34,7 @@ function loadExternalResource(url, type) {
 	]).then(() => {
 		initWidget({
 			waifuPath: tips_path + "waifu-tips.min.json",
-			apiPath: "https://m1314.cn/live2d/",
+			apiPath: "https://api.m1314.cn/live2d/",
 			cdnPath: "https://fogforest.cn-sh2.ufileos.com/BLOG/live2d_api/"
 		});
 	});
