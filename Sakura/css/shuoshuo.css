@@ -18,7 +18,7 @@ div class.cdp_tmlabel > li .cbp_tmlabel {
 	position:relative
 }
 
-/* The line */
+/* The line棍子
 .cbp_tmtimeline:before {
 	content:'';
 	position:absolute;
@@ -28,7 +28,7 @@ div class.cdp_tmlabel > li .cbp_tmlabel {
 	background:RGBA(0,0,0,0.02);
 	left:80px;
 	margin-left:10px
-}
+}*/
 
 /* The date/time */
 .cbp_tmtimeline > li .cbp_tmtime {

@@ -1927,7 +1927,9 @@ function shuoshuo_custom_init()
         'supports' => array(
             'title',
             'editor',
-            'author'
+            'author',
+			'comments'
+
         )
     );
     register_post_type('shuoshuo', $args);

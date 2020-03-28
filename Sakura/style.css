@@ -8882,142 +8882,21 @@ h1[id*=toc-head]::before,h2[id*=toc-head]::before,h3[id*=toc-head]::before,h4[id
     }
 }
 
-/* 文章过期提醒 */
-.old-message {
-    padding: 5px 10px;
-    font-size: 15px;
-    border: 1px solid #e2e2e2;
-    background-color: #eee;
-    border-left: 5px solid #00d1bf;
-    color: #333;
-    overflow: hidden
+/*文章长期未更新警告*/
+.warn{
+    background: #ff953f;
+    background: -webkit-gradient(linear,left top,right top,from(#ff953f),to(#ffb449));
+    background: -webkit-linear-gradient(left,#ff953f,#ffb449);
+    background: linear-gradient(90deg,#ff953f,#ffb449);
+    text-shadow: 0 -1px #ff953f;
+    -webkit-box-shadow: 0 3px 5px rgba(255,154,73,.5);
+    box-shadow: 0 3px 5px rgba(255,154,73,.5);
+    display: inline-block;
+    color: #fff;
+    font-size: 16px;
+    padding: 15px;
+    border-radius: 50px;
 }
-
-.expired-message {
-    color: #31708f;
-    background-color: #d9edf7;
-    border-color: #bce8f1;
-    border: 1px dashed #e0e0e0;
-    padding: 1em 28px;
-    margin-top: 5px;
-    border-radius: 0
-}
-
-/* 投喂列表 */
-summary:hover {
-	background: #ccc;
-}
-
-summary {
-	padding: 5px 10px;
-	border: 1px solid #e8e8e8;
-	background: #f5f5f5;
-	color: #111;
-	border-radius: 3px;
-	outline: 0;
-}
-
-/* Steam游戏库 */
-.steam-game-tabs {
-	margin-bottom: 15px;
-	margin-top: 15px;
-}
-
-.steam-game-tab {
-	padding: 5px;
-}
-
-a.steam-game-tab {
-	text-decoration: none;
-}
-
-.steam-game-active {
-	background: #657b83;
-	color: #fff;
-}
-
-.steam-game-item {
-	padding-bottom: 10px;
-	position: relative;
-	clear: both;
-	min-height: 100px;
-	padding: 10px 0;
-	border-bottom: 1px #ddd solid;
-}
-
-@media screen and (max-width:600px) {
-	.steam-game-item {
-		width: 100%;
-	}
-}
-
-.steam-game-picture {
-	position: absolute;
-	left: 0;
-	top: 10px;
-	width: 184px;
-	padding-top: 5px;
-}
-
-.steam-game-info {
-	margin: 25px 0;
-	padding-left: 194px;
-}
-
-.steam-game-meta {
-	font-size: 12px;
-	padding-right: 10px;
-}
-
-.steam-game-pagination {
-	margin-top: 15px;
-	text-align: center;
-	margin-bottom: 10px;
-}
-
-.steam-game-button {
-	padding: 5px;
-	text-decoration: none;
-	display: inline-block;
-}
-
-.steam-game-button:hover {
-	background: #657b83;
-	color: #fff;
-}
-
-.steam-game-hide {
-	display: none;
-}
-
-.steam-game-show {
-	display: block;
-}
-
-.steam-game-title {
-	font-size: 18px;
-}
-
-.steam-game-title a {
-	line-height: 1;
-	color: #99a9bf;
-}
-
-.steam-game-link {
-	min-height: 50px;
-}
-
-.steam-game-link a {
-	color: #99a9bf;
-}
-
-@media (max-width:400px) {
-	.steam-game-picture {
-		padding-left: 5px;
-	}
-
-	.steam-game-info {
-		margin: 10px 0;
-		padding: 85px 0 0 5px;
-	}
+.warn:before {
+    content: "🤣 ";
 }
