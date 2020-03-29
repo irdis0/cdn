@@ -8288,7 +8288,7 @@ td.hljs-ln-numbers {
 }
 
 .chinese-font {
-    font-family: 'zhanku', 'Merriweather Sans', Helvetica, Tahoma, Arial, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft Yahei', 'WenQuanYi Micro Hei', sans-serif
+    font-family: 'Merriweather Sans', Helvetica, Tahoma, Arial, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft Yahei', 'WenQuanYi Micro Hei', sans-serif
 }
 
 .chinese-tranditional-font {
@@ -8317,7 +8317,7 @@ td.hljs-ln-numbers {
 
 @media (max-width:860px) {
     .serif {
-        font-family: 'zhanku', 'Merriweather Sans', Helvetica, Tahoma, Arial, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft Yahei', 'WenQuanYi Micro Hei', sans-serif
+        font-family: 'Merriweather Sans', Helvetica, Tahoma, Arial, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft Yahei', 'WenQuanYi Micro Hei', sans-serif
     }
 }
 
@@ -8723,6 +8723,7 @@ h1[id*=toc-head]::before,h2[id*=toc-head]::before,h3[id*=toc-head]::before,h4[id
     url("https://cdn.jsdelivr.net/gh/Fog-Forest/cdn@2.0.1/Sakura/fonts/zhanku/zhanku.svg#zhanku") format("svg"); /* iOS 4.1- */
     font-style: normal;
     font-weight: normal;
+	font-display: swap;
 }
 
 /* 文字LOGO样式 */
@@ -8735,6 +8736,7 @@ h1[id*=toc-head]::before,h2[id*=toc-head]::before,h3[id*=toc-head]::before,h4[id
     url("https://cdn.jsdelivr.net/gh/Fog-Forest/cdn@1.9.4/Sakura/LOGO/miao.svg#miao") format("svg"); /* iOS 4.1- */
     font-style: normal;
     font-weight: normal;
+	font-display: swap;
 }
 
 .miao {
