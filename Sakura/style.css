@@ -1064,9 +1064,10 @@ a:hover {
 .site-top .lower {
     position: relative;
     display: inline-block;
-    float: right;
-    margin: 15px 0 0 0;
-    font-size: 16px
+    margin: 15px 0 0 10px;
+    font-size: 16px;
+	left: -50%;
+    pointer-events: auto !important;
 }
 
 @media (max-width:860px) {
@@ -7878,6 +7879,7 @@ a.toc-link {
     padding: 0 !important;
     float: right;
     transform: translateY(-46px);
+	font-family: Noto Serif SC;
     cursor: pointer
 }
 
@@ -7909,7 +7911,6 @@ a.toc-link {
 .top-feature-row {
     width: 100%;
     height: auto;
-	font-family: Noto Serif SC;
     margin-top: 55px
 }
 
@@ -8723,7 +8724,7 @@ h1[id*=toc-head]::before,h2[id*=toc-head]::before,h3[id*=toc-head]::before,h4[id
     url("https://cdn.jsdelivr.net/gh/Fog-Forest/cdn@2.0.1/Sakura/fonts/zhanku/zhanku.svg#zhanku") format("svg"); /* iOS 4.1- */
     font-style: normal;
     font-weight: normal;
-	font-display: swap;
+    font-display: swap;
 }
 
 /* 文字LOGO样式 */
@@ -8736,7 +8737,7 @@ h1[id*=toc-head]::before,h2[id*=toc-head]::before,h3[id*=toc-head]::before,h4[id
     url("https://cdn.jsdelivr.net/gh/Fog-Forest/cdn@1.9.4/Sakura/LOGO/miao.svg#miao") format("svg"); /* iOS 4.1- */
     font-style: normal;
     font-weight: normal;
-	font-display: swap;
+    font-display: swap;
 }
 
 .miao {
@@ -8882,4 +8883,65 @@ h1[id*=toc-head]::before,h2[id*=toc-head]::before,h3[id*=toc-head]::before,h4[id
     .poem-border {
         display: none;
     }
+}
+
+/* 文章长期未更新警告 */
+.warn {
+	background: #ff953f;
+	background: -webkit-gradient(linear,left top,right top,from(#ff953f),to(#ffb449));
+	background: -webkit-linear-gradient(left,#ff953f,#ffb449);
+	background: linear-gradient(90deg,#ff953f,#ffb449);
+	text-shadow: 0 -1px #ff953f;
+	-webkit-box-shadow: 0 3px 5px rgba(255,154,73,.5);
+	box-shadow: 0 3px 5px rgba(255,154,73,.5);
+	display: inline-block;
+	color: #fff;
+	font-size: 16px;
+	padding: 15px;
+	border-radius: 50px;
+}
+
+.warn:before {
+	content: "🤣 ";
+}
+
+/* 菜单栏居中 */
+.site-header.is-homepage .lower-cantiner {
+    display: none;
+}
+
+.site-header.is-homepage.yya .lower-cantiner {
+    display: block;
+}
+
+.site-header:hover.is-homepage .lower-cantiner {
+    display: block;
+}
+
+.site-top .lower-cantiner {
+    position: absolute;
+    left: 50%;
+    min-width: 758.4px;
+    pointer-events: none;
+}
+
+#show-nav.mobile-fit {
+    position: fixed !important;
+    right: 120px;
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* 投喂列表 */
+summary:hover {
+	background: #ccc;
+}
+
+summary {
+	padding: 5px 10px;
+	border: 1px solid #e8e8e8;
+	background: #f5f5f5;
+	color: #111;
+	border-radius: 3px;
+	outline: 0;
 }
