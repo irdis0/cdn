@@ -199,11 +199,12 @@ function sakura_scripts()
     $movies = akina_option('focus_amv') ? array('url' => akina_option('amv_url'), 'name' => akina_option('amv_title'), 'live' => $mv_live) : 'close';
     $auto_height = akina_option('focus_height') ? 'fixed' : 'auto';
     $code_lamp = 'close';
-    if (wp_is_mobile()) {
-        $auto_height = 'fixed';
-    }
+    // if (wp_is_mobile()) {
+    //     $auto_height = 'fixed';
+    // }
     //拦截移动端
     version_compare($GLOBALS['wp_version'], '5.1', '>=') ? $reply_link_version = 'new' : $reply_link_version = 'old';
+    $gravatar_url = akina_option('gravatar_proxy') ?: 'secure.gravatar.com/avatar';
     wp_localize_script('app', 'Poi', array(
         'pjax' => akina_option('poi_pjax'),
         'movies' => $movies,
@@ -215,6 +216,8 @@ function sakura_scripts()
         'reply_link_version' => $reply_link_version,
         'api' => esc_url_raw(rest_url()),
         'nonce' => wp_create_nonce('wp_rest'),
+        'google_analytics_id' => akina_option('google_analytics_id', ''),
+        'gravatar_url' => $gravatar_url
     ));
 }
 add_action('wp_enqueue_scripts', 'sakura_scripts');
@@ -607,11 +610,15 @@ function get_link_items()
  * Gravatar头像使用中国服务器
  */
 function gravatar_cn($url)
-{
-    $gravatar_url = array('0.gravatar.com', '1.gravatar.com', '2.gravatar.com', 'secure.gravatar.com');
-    return str_replace($gravatar_url, 'cn.gravatar.com', $url);
+{    
+    $gravatar_url = array('0.gravatar.com/avatar','1.gravatar.com/avatar','2.gravatar.com/avatar','secure.gravatar.com/avatar');
+    //return str_replace($gravatar_url, 'cn.gravatar.com', $url);
+    //官方服务器近期大陆访问 429，建议使用镜像
+    return str_replace( $gravatar_url, akina_option('gravatar_proxy'), $url );
 }
-add_filter('get_avatar_url', 'gravatar_cn', 4);
+if(akina_option('gravatar_proxy')){
+    add_filter('get_avatar_url', 'gravatar_cn', 4);
+}
 
 /*
  * 自定义默认头像
@@ -659,6 +666,7 @@ function akina_body_classes($classes)
     /*if(!wp_is_mobile()) {
     $classes[] = 'serif';
     }*/
+    $classes[] = $_COOKIE['dark'.akina_option('cookie_version', '')] == '1' ? 'dark' : ' ';
     return $classes;
 }
 add_filter('body_class', 'akina_body_classes');
@@ -1062,7 +1070,7 @@ add_filter('comment_text', 'comment_picture_support');
 add_filter('smilies_src', 'custom_smilies_src', 1, 10);
 function custom_smilies_src($img_src, $img, $siteurl)
 {
-    return 'https://cdn.jsdelivr.net/gh/moezx/cdn@3.1.9/img/Sakura/images/smilies/' . $img;
+    return 'https://cdn.jsdelivr.net/gh/Fog-Forest/Picture-Bed/smilies/' . $img;
 }
 // 简单遍历系统表情库，今后应考虑标识表情包名——使用增加的扩展名，同时保留原有拓展名
 // 还有一个思路是根据表情调用路径来判定<-- 此法最好！
@@ -1073,7 +1081,7 @@ function push_smilies()
     foreach ($wpsmiliestrans as $k => $v) {
         $Sname = str_replace(":", "", $k);
         $Svalue = $v;
-        $return_smiles = $return_smiles . '<span title="' . $Sname . '" onclick="grin(' . "'" . $Sname . "'" . ')"><img src="https://cdn.jsdelivr.net/gh/moezx/cdn@3.1.9/img/Sakura/images/smilies/' . $Svalue . '" /></span>';
+        $return_smiles = $return_smiles . '<span title="' . $Sname . '" onclick="grin(' . "'" . $Sname . "'" . ')"><img src="https://cdn.jsdelivr.net/gh/Fog-Forest/Picture-Bed/smilies/' . $Svalue . '" /></span>';
     }
     return $return_smiles;
 }
@@ -1087,38 +1095,50 @@ function smilies_reset()
     }
 
     $wpsmiliestrans = array(
-        ':good:' => 'icon_good.gif',
-        ':han:' => 'icon_han.gif',
-        ':spray:' => 'icon_spray.gif',
-        ':Grievance:' => 'icon_Grievance.gif',
-        ':shui:' => 'icon_shui.gif',
-        ':reluctantly:' => 'icon_reluctantly.gif',
-        ':anger:' => 'icon_anger.gif',
-        ':tongue:' => 'icon_tongue.gif',
-        ':se:' => 'icon_se.gif',
-        ':haha:' => 'icon_haha.gif',
-        ':rmb:' => 'icon_rmb.gif',
-        ':doubt:' => 'icon_doubt.gif',
-        ':tear:' => 'icon_tear.gif',
-        ':surprised2:' => 'icon_surprised2.gif',
-        ':Happy:' => 'icon_Happy.gif',
-        ':ku:' => 'icon_ku.gif',
-        ':surprised:' => 'icon_surprised.gif',
-        ':theblackline:' => 'icon_theblackline.gif',
-        ':smilingeyes:' => 'icon_smilingeyes.gif',
-        ':spit:' => 'icon_spit.gif',
-        ':huaji:' => 'icon_huaji.gif',
-        ':bbd:' => 'icon_bbd.gif',
-        ':hu:' => 'icon_hu.gif',
-        ':shame:' => 'icon_shame.gif',
-        ':naive:' => 'icon_naive.gif',
-        ':rbq:' => 'icon_rbq.gif',
-        ':britan:' => 'icon_britan.gif',
-        ':aa:' => 'icon_aa.gif',
-        ':niconiconi:' => 'icon_niconiconi.gif',
-        ':niconiconi-t:' => 'icon_niconiconi_t.gif',
-        ':niconiconit:' => 'icon_niconiconit.gif',
-        ':awesome:' => 'icon_awesome.gif',
+        ':calei:' => 'calei.png',
+        ':ccc:' => 'ccc.png',
+        ':chigua:' => 'chigua.png',
+        ':daimeng:' => 'daimeng.png',
+        ':dani:' => 'dani.png',
+        ':diaoyan:' => 'diaoyan.png',
+        ':enheng:' => 'enheng.png',
+        ':gan:' => 'gan.png',
+        ':guzhang:' => 'guzhang.gif',
+        ':guandeng:' => 'guandeng.gif',
+        ':haipa:' => 'haipa.gif',
+        ':heihei:' => 'heihei.png',
+        ':hengji:' => 'hengji.png',
+        ':liulei:' => 'liulei.png',
+        ':nice:' => 'nice.png',
+        ':taotou:' => 'taotou.png',
+        ':touxiao:' => 'touxiao.png',
+        ':what:' => 'what.png',
+        ':woc:' => 'woc.png',
+        ':wuliulei:' => 'wuliulei.png',
+        ':xixi:' => 'xixi.png',
+        ':youhei:' => 'youhei.png',
+        ':emmm:' => 'emmm.gif',
+        ':waibiwaibi:' => 'waibiwaibi.gif',
+        ':buting:' => 'buting.gif',
+        ':bubu:' => 'bubu.gif',
+        ':xiuxiuxiu:' => 'xiuxiuxiu.gif',
+        ':momoda:' => 'momoda.gif',
+        ':mua:' => 'mua.gif',
+        ':kengkeng:' => 'kengkeng.gif',
+        ':bling:' => 'kengkeng.gif',
+        ':aha:' => 'aha.png',
+        ':bixinxin:' => 'bixinxin.png',
+        ':chicao:' => 'chicao.png',
+        ':heng-p:' => 'heng-p.png',
+        ':pu:' => 'pu.png',
+        ':siliu:' => 'siliu.png',
+        ':xianmu:' => 'xianmu.png',
+        ':haixiu:' => 'haixiu.gif',
+        ':keai:' => 'keai.png',
+        ':tanqi:' => 'tanqi.png',
+        ':liuhan:' => 'liuhan.png',
+        ':kanbujian:' => 'kanbujian.png',
+        ':alei:' => 'alei.png',
     );
 }
 smilies_reset();
@@ -1755,11 +1775,13 @@ function DEFAULT_FEATURE_IMAGE()
 }
 
 //防止设置置顶文章造成的图片同侧bug
-add_action('pre_get_posts', function ($q) {
-    if ($q->is_home() && $q->is_main_query() && $q->get('paged') > 1) {
-        $q->set('post__not_in', get_option('sticky_posts'));
+add_action( 'pre_get_posts', function( $q ){
+    if ( $q->is_home() && $q->is_main_query() ){
+        $q->set( 'posts_per_page', 10 - sizeof(get_option( 'sticky_posts' )) );
+        if ( $q->get( 'paged' ) > 1 )
+            $q->set( 'post__not_in', get_option( 'sticky_posts' ) );
     }
-
+    
 });
 
 //评论回复

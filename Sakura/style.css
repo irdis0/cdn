@@ -5,7 +5,7 @@ Theme URI: https://github.com/mashirozx/Sakura/
 Author: Mashiro, Spirit, Louie, Fuzzz
 Author URI: http://2heng.xin
 Description: A wonderful branch of theme Akina
-Version: 3.3.7
+Version: 3.3.8
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: sakura
@@ -1066,8 +1066,8 @@ a:hover {
     display: inline-block;
     margin: 15px 0 0 10px;
     font-size: 16px;
-	left: -50%;
-    pointer-events: auto !important;
+    left: -50%;
+    pointer-events: auto !important
 }
 
 @media (max-width:860px) {
@@ -1146,7 +1146,7 @@ a:hover {
 
 @media(max-width:1200px) {
     .site-top .lower nav{
-        right: calc(-150px - 100%);
+        /*right: calc(-150px - 100%);这行注释适配IPadPro*/
         position: absolute;
         float: right;
         animation: searchbox .2s;
@@ -1284,7 +1284,7 @@ a:hover {
     padding: 0 10px;
     margin-left: auto;
     margin-right: auto;
-    background-color: rgba(255, 255, 255, .8)
+    background-color: #fff
 }
 
 .post-list {
@@ -1326,7 +1326,8 @@ a:hover {
     border-radius: 50%;
     padding: 2px;
     border: 1px solid #DADADA;
-    position: relative
+    position: relative;
+    object-fit: cover
 }
 
 .feature :hover .overlay i {
@@ -1709,6 +1710,10 @@ i.iconfont.hotpost {
     background: #FBFBFB
 }
 
+body.dark .s-content{
+    background: unset;
+}
+
 .s-time i {
     font-size: 13px;
     margin-right: 5px
@@ -1877,21 +1882,10 @@ h1.page-title.mb- {
     text-align: center
 }
 
-@media screen and (max-width:860px) {
-    .cd-top {
-        display: none;
-        height: 60px;
-        width: 50px
-    }
-    .cd-top span {
-        height: 10px;
-        width: 50px
-    }
-}
-
-#moblieGoTop {
+#moblieGoTop,#moblieDarkLight {
+    visibility: hidden;
     position: fixed;
-    bottom: 10px;
+    bottom: 60px;
     right: 10px;
     z-index: 99;
     border: 0;
@@ -1906,11 +1900,29 @@ h1.page-title.mb- {
     transform: scale(0);
     transition:transform .3s
 }
-#moblieGoTop:hover {
+#moblieGoTop:hover,#moblieDarkLight:hover {
     background-color: #fff;
     opacity: .8
 }
 
+#moblieDarkLight{
+    bottom: 10px;
+}
+
+@media screen and (max-width:860px) {
+    .cd-top {
+        display: none;
+        height: 60px;
+        width: 50px
+    }
+    .cd-top span {
+        height: 10px;
+        width: 50px
+    }
+    #moblieGoTop,#moblieDarkLight{
+        visibility: visible;
+    }
+}
 .post-footer {
     padding: 20px 0;
     border-bottom: 1px dashed #ddd;
@@ -3867,6 +3879,10 @@ li.feature-2 {
     z-index: -1
 }
 
+@supports (-webkit-touch-callout: none) {
+    #centerbg: { background-attachment: scroll !important; }
+}
+
 @media (max-width:860px) {
     #centerbg {
         height: 300px;
@@ -4365,7 +4381,9 @@ i.iconfont.js-toggle-search.iconsearch {
 	margin-top: -3px;
 	line-height: unset;
 }
-
+body.dark .ins-section .fa{
+    color: #ccc;
+}
 .ins-section .ins-section-header,.ins-section .ins-search-item {
 	padding: 8px 15px;
 	cursor: url(https://cdn.jsdelivr.net/gh/moezx/cdn@3.1.9/img/Sakura/cursor/ayuda.cur),auto;
@@ -5010,7 +5028,7 @@ i.iconfont.down {
     color: #ADADAD
 }
 
-#pagination span {
+#pagination span,#bangumi-pagination span {
     color: #989898;
     font-size: 15px
 }
@@ -5020,7 +5038,7 @@ i.iconfont.down {
     color: orange
 }
 
-#pagination .loading {
+#pagination .loading,#bangumi-pagination .loading {
     background: url(https://cdn.jsdelivr.net/gh/moezx/cdn@3.1.9/img/Sakura/images/wordpress-rotating-ball-o.svg);
     background-position: center;
     background-repeat: no-repeat;
@@ -5218,7 +5236,7 @@ i.iconfont.down {
 
 @media (max-width:860px) {
     #main-container {
-        transition-duration: .5s;
+        transition: background,transform .5s !important;
         position: relative;
         overflow: hidden;
         z-index: 2
@@ -5305,7 +5323,7 @@ i.iconfont.down {
         top: 8px
     }
     .openNav.open .icon {
-        background-color: transparent
+        background-color: transparent !important
     }
     .openNav.open .icon:after,
     .openNav.open .icon:before {
@@ -5811,7 +5829,8 @@ i.iconfont.down {
 }
 
 .header-user-avatar:hover .header-user-menu {
-    display: block
+    display: block;
+    background: #fff;
 }
 
 .header-user-menu {
@@ -5842,7 +5861,6 @@ i.iconfont.down {
 
 .herder-user-name {
     font-size: 12px;
-    background: #fff;
     padding: 10px 10px;
     border-radius: 4px 4px 0 0
 }
@@ -5858,7 +5876,6 @@ i.iconfont.down {
 
 .header-user-menu .user-menu-option {
     padding: 5px 0;
-    background: #fff;
     border-radius: 0 0 4px 4px;
     width: 130px
 }
@@ -5878,6 +5895,11 @@ i.iconfont.down {
     background-color: #f1f1f1
 }
 
+body.dark .user-menu-option a:hover {
+    color: #3daee9;
+    background-color: #232629
+}
+
 .no-logged {
     font-size: 13px;
     padding: 15px 10px;
@@ -5887,7 +5909,7 @@ i.iconfont.down {
 
 .no-logged a {
     display: initial;
-    color: #69d2e7;
+    color: #69d2e7 !important;
     font-size: 14px;
     padding: 0 5px;
     text-decoration: underline
@@ -6173,7 +6195,7 @@ i.iconfont.down {
 }
 
 @keyframes loading {
-    0 {
+    0% {
         transform: translate(0, 0);
         background-color: #ababab
     }
@@ -7879,7 +7901,6 @@ a.toc-link {
     padding: 0 !important;
     float: right;
     transform: translateY(-46px);
-	font-family: Noto Serif SC;
     cursor: pointer
 }
 
@@ -7911,6 +7932,7 @@ a.toc-link {
 .top-feature-row {
     width: 100%;
     height: auto;
+    font-family: 'Noto Serif SC';/*这边用原来字体主要是怕聚焦图错位*/
     margin-top: 55px
 }
 
@@ -8279,6 +8301,8 @@ td.hljs-ln-numbers {
     --widthB: calc(var(--widthA) - 30px);
     height: var(--widthB);
     min-height: 99%;
+    white-space: pre-wrap;
+    word-wrap: break-word;
     overflow-y: hidden;
     overflow-x: auto;
     height: auto
@@ -8313,7 +8337,7 @@ td.hljs-ln-numbers {
 }
 
 .serif {
-    font-family: 'zhanku', 'Noto Serif SC', 'Source Han Serif SC', 'Source Han Serif', source-han-serif-sc, 'PT Serif', 'SongTi SC', 'MicroSoft Yahei', Georgia, serif
+    font-family: zhanku, 'Noto Serif SC', 'Source Han Serif SC', 'Source Han Serif', source-han-serif-sc, 'PT Serif', 'SongTi SC', 'MicroSoft Yahei', Georgia, serif
 }
 
 @media (max-width:860px) {
@@ -8627,11 +8651,189 @@ h1[id*=toc-head]::before,h2[id*=toc-head]::before,h3[id*=toc-head]::before,h4[id
     height: 100%;
 }
 
+/*.bangumi {
+    margin-top: 40px;
+}
+.bangumi .row {
+    display: flex;
+    margin: 0 -10px -20px;
+    flex-wrap: wrap;
+}
+.bangumi .column {
+    max-width: 50%;
+    flex: 0 0 50%;
+    margin-bottom: 30px;
+    padding: 0 15px;
+    max-width: 100%;
+    flex: 0 0 100%;
+    transition: .5s;
+}
+
+.bangumi-item {
+    height: 0;
+    color: #fff;
+    display: block;
+    overflow: hidden;
+    text-align: center;
+    position: relative;
+    padding-bottom: 130%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1), 0 5px 20px rgba(0, 0, 0, .2);
+}
+.bangumi-item:hover {
+    color: #fff;
+}
+.bangumi-item img {
+    width: 100%;
+    user-select: none;
+    object-fit: cover;
+    transition: filter 2s;
+}
+.bangumi-item .bangumi-info {
+    height: 30%;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 10px;
+    position: absolute;
+    background: rgba(0, 0, 0, .5);
+    transition: transform 1s;
+    transform: translateY(250%);
+}
+.bangumi-title {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    margin-top: 0;
+}
+.bangumi-summary {
+    height: 65%;
+    white-space: normal;
+    display: none;
+    font-weight: bold;
+}
+.bangumi-status-bar {
+    top: 0;
+    bottom: 0;
+    max-width: 100%;
+    position: absolute;
+    background: #dc143c;
+}
+.bangumi-status, .bangumi-status p {
+    position: relative;
+}
+.bangumi-status {
+    background: rgba(0, 0, 0, .6);
+}
+
+@media screen and (min-width: 400px) {
+    .bangumi .column {
+        max-width: 50%;
+        flex: 0 0 50%;
+    }
+    .bangumi-item .bangumi-info{
+        height: 50%;
+        transform: translateY(140%);
+    }
+    .bangumi-title {
+        height: 20%;
+    }
+}
+@media screen and (min-width: 600px) {
+    .bangumi .column {
+        max-width: 33.3333%;
+        flex: 0 0 33.3333%;
+    }
+    .bangumi-title {
+        height: 30%;
+    }
+    .bangumi-item .bangumi-info{
+        height: 45%;
+        transform: translateY(140%);
+    }
+}
+@media screen and (min-width: 900px) {
+    .bangumi .column {
+        max-width: 25%;
+        flex: 0 0 25%;
+    }
+    .bangumi-item .bangumi-info{
+        height: 100%;
+        transform: translateY(85%);
+    }
+    .bangumi-item:hover .bangumi-info {
+        transform: translateY(0);
+    }
+    .bangumi-item:hover img{
+        filter: blur(3px);
+    }
+    body.dark .bangumi-item:hover img{
+        filter: brightness(0.8) blur(3px);
+    }
+    .bangumi-title {
+        height: 15%;
+    }
+    .bangumi-summary{
+        display: block;
+    }
+    .bangumi-status {
+        height: 10%;
+    }
+}
+@media screen and (min-width: 1200px) {
+    .bangumi-item .bangumi-info{
+        height: 75%;
+        transform: translateY(115%);
+    }
+    .bangumi-item:hover .bangumi-info {
+        transform: translateY(35%);
+    }
+    .bangumi-title {
+        height: 10%;
+    }
+}
+
+#bangumi-pagination {
+    width: 100%;
+    margin-top: 80px;
+    padding: 20px 0;
+    font-size: 36px;
+    text-align: center;
+}
+
+.bangumi-next{
+    font-family: sans-serif;
+    color: #e67474;
+    position: relative;
+    padding: 13px 35px;
+    overflow: hidden;
+}
+
+.bangumi-next:before {
+    content: ' ';
+    background-color: pink;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 0;
+    position: absolute;
+    transition: all 5s;
+    z-index: -1;
+}
+.bangumi-next.loading:before{
+    display: none !important;
+}
+.bangumi-next:hover:before {
+    height: 100%;
+}
+.bangumi-next i {
+    color: orange;
+}*/
+
 /* 首页浮动波浪动画 */
 #banner_wave_1 {
 	width: auto;
 	height: 65px;
-	background: url(https://ae01.alicdn.com/kf/Hc4333d4dc39746a4bcfd6fe29263fe55G.png) repeat-x;
+	background: url(https://cdn.jsdelivr.net/gh/Fog-Forest/Picture-Bed/blog/wave_1.png) repeat-x;
 	_filter: alpha(opacity=80);
 	position: absolute;
 	bottom: 0;
@@ -8651,7 +8853,7 @@ h1[id*=toc-head]::before,h2[id*=toc-head]::before,h3[id*=toc-head]::before,h4[id
 #banner_wave_2 {
 	width: auto;
 	height: 80px;
-	background: url(https://ae01.alicdn.com/kf/H2b45eab048b64170a9f0aa2a70b5d683Z.png) repeat-x;
+	background: url(https://cdn.jsdelivr.net/gh/Fog-Forest/Picture-Bed/blog/wave_2.png) repeat-x;
 	_filter: alpha(opacity=80);
 	position: absolute;
 	bottom: 0;
@@ -8741,7 +8943,7 @@ h1[id*=toc-head]::before,h2[id*=toc-head]::before,h3[id*=toc-head]::before,h4[id
 }
 
 .miao {
-	font-family: 'miao','Merriweather Sans',Helvetica,Tahoma,Arial,'PingFang SC','Hiragino Sans GB','Microsoft Yahei','WenQuanYi Micro Hei',sans-serif;
+	font-family: miao,'Merriweather Sans',Helvetica,Tahoma,Arial,'PingFang SC','Hiragino Sans GB','Microsoft Yahei','WenQuanYi Micro Hei',sans-serif;
 }
 
 .logolink .sakuraso {
@@ -8885,6 +9087,29 @@ h1[id*=toc-head]::before,h2[id*=toc-head]::before,h3[id*=toc-head]::before,h4[id
     }
 }
 
+/* 菜单栏居中 */
+.site-header.is-homepage .lower-cantiner {
+    display: none;
+}
+.site-header.is-homepage.yya .lower-cantiner {
+    display: block;
+}
+.site-header:hover.is-homepage .lower-cantiner {
+    display: block;
+}
+.site-top .lower-cantiner {
+    position: absolute;
+    left: 50%;
+    min-width: 758.4px;
+    pointer-events: none;
+}
+#show-nav.mobile-fit {
+    position: fixed !important;
+    right: 120px;
+    opacity: 0;
+    pointer-events: none;
+}
+
 /* 文章长期未更新警告 */
 .warn {
 	background: #ff953f;
@@ -8903,33 +9128,6 @@ h1[id*=toc-head]::before,h2[id*=toc-head]::before,h3[id*=toc-head]::before,h4[id
 
 .warn:before {
 	content: "🤣 ";
-}
-
-/* 菜单栏居中 */
-.site-header.is-homepage .lower-cantiner {
-    display: none;
-}
-
-.site-header.is-homepage.yya .lower-cantiner {
-    display: block;
-}
-
-.site-header:hover.is-homepage .lower-cantiner {
-    display: block;
-}
-
-.site-top .lower-cantiner {
-    position: absolute;
-    left: 50%;
-    min-width: 758.4px;
-    pointer-events: none;
-}
-
-#show-nav.mobile-fit {
-    position: fixed !important;
-    right: 120px;
-    opacity: 0;
-    pointer-events: none;
 }
 
 /* 投喂列表 */
