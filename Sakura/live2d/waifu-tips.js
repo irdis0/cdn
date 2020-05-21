@@ -34,12 +34,9 @@ function loadWidget(config) {
 			<div id="waifu-tips"></div>
 			<canvas id="live2d" width="250" height="300"></canvas>
 			<div id="waifu-tool">
-				<span class="fa fa-lg fa-comment"></span>
-				<span class="fa fa-lg fa-paper-plane"></span>
 				<span class="fa fa-lg fa-user-circle"></span>
 				<span class="fa fa-lg fa-street-view"></span>
 				<span class="fa fa-lg fa-camera-retro"></span>
-				<span class="fa fa-lg fa-info-circle"></span>
 				<span class="fa fa-lg fa-times"></span>
 			</div>
 		</div>`);
@@ -49,26 +46,12 @@ function loadWidget(config) {
 	}, 0);
 
 	(function registerEventListener() {
-		document.querySelector("#waifu-tool .fa-comment").addEventListener("click", showHitokoto);
-		document.querySelector("#waifu-tool .fa-paper-plane").addEventListener("click", () => {
-			if (window.Asteroids) {
-				if (!window.ASTEROIDSPLAYERS) window.ASTEROIDSPLAYERS = [];
-				window.ASTEROIDSPLAYERS.push(new Asteroids());
-			} else {
-				var script = document.createElement("script");
-				script.src = "https://cdn.jsdelivr.net/gh/GalaxyMimi/CDN/asteroids.js";
-				document.head.appendChild(script);
-			}
-		});
 		document.querySelector("#waifu-tool .fa-user-circle").addEventListener("click", loadOtherModel);
 		document.querySelector("#waifu-tool .fa-street-view").addEventListener("click", loadRandModel);
 		document.querySelector("#waifu-tool .fa-camera-retro").addEventListener("click", () => {
 			showMessage("照好了嘛，是不是很可爱呢？", 6000, 9);
 			Live2D.captureName = "photo.png";
 			Live2D.captureFrame = true;
-		});
-		document.querySelector("#waifu-tool .fa-info-circle").addEventListener("click", () => {
-			open("https://github.com/stevenjoezhang/live2d-widget");
 		});
 		document.querySelector("#waifu-tool .fa-times").addEventListener("click", () => {
 			localStorage.setItem("waifu-display", Date.now());
@@ -138,17 +121,16 @@ function loadWidget(config) {
 		}
 	}, 1000);
 
-	function showHitokoto() {
-		// 增加 hitokoto.cn 的 API
-		fetch("https://v1.hitokoto.cn")
+	// 随机一言
+	window.onload = loadHitokoto;
+	function loadHitokoto(){
+		window.setInterval(()=>{
+			fetch("https://v1.hitokoto.cn")
 			.then(response => response.json())
 			.then(result => {
-				var text = `这句一言是 <span>${result.creator}</span>投稿的。`;
 				showMessage(result.hitokoto, 6000, 9);
-				setTimeout(() => {
-					showMessage(text, 4000, 9);
-				}, 6000);
 			});
+		}, 30000); //30S执行一次
 	}
 
 	function showMessage(text, timeout, priority) {
@@ -176,7 +158,7 @@ function loadWidget(config) {
 		if (modelId === null) {
 			// 首次访问加载 指定模型 的 指定材质
 			var modelId = 1, // 模型 ID
-				modelTexturesId = 53; // 材质 ID
+				modelTexturesId = 1; // 材质 ID
 		}
 		loadModel(modelId, modelTexturesId);
 		fetch(waifuPath)

@@ -1139,6 +1139,14 @@ function smilies_reset()
         ':liuhan:' => 'liuhan.png',
         ':kanbujian:' => 'kanbujian.png',
         ':alei:' => 'alei.png',
+        ':ganbei:' => 'ganbei.png',
+        ':outman:' => 'outman.png',
+        ':chouchou:' => 'chouchou.png',
+        ':zhaxin:' => 'zhaxin.png',
+        ':ganbei:' => 'ganbei.png',
+        ':outman:' => 'outman.png',
+        ':chouchou:' => 'chouchou.png',
+        ':zhaxin:' => 'zhaxin.png',
     );
 }
 smilies_reset();
