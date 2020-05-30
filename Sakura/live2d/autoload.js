@@ -1,6 +1,6 @@
 // 注意：live2d_path 参数应使用绝对路径，记得修改哦
-const live2d_path = "https://cdn.jsdelivr.net/gh/Fog-Forest/cdn@2.1.0/Sakura/live2d/";
-const tips_path = "https://cdn.jsdelivr.net/gh/Fog-Forest/cdn@2.1.0/Sakura/live2d/";
+const live2d_path = "https://cdn.jsdelivr.net/gh/Fog-Forest/cdn@2.1.1/Sakura/live2d/";
+const tips_path = "https://cdn.jsdelivr.net/gh/Fog-Forest/cdn@2.1.1/Sakura/live2d/";
 //const live2d_path = "";
 //const live2d_path = "/live2d-widget/";
 
@@ -27,14 +27,14 @@ function loadExternalResource(url, type) {
 }
 
 // 加载 waifu.css live2d.min.js waifu-tips.js
-	Promise.all([
-		loadExternalResource(live2d_path + "waifu.min.css", "css"),
-		loadExternalResource(live2d_path + "live2d.min.js", "js"),
-		loadExternalResource(live2d_path + "waifu-tips.js", "js")
-	]).then(() => {
-		initWidget({
-			waifuPath: tips_path + "waifu-tips.min.json",
-			apiPath: "https://api.m1314.cn/live2d/",
-			cdnPath: "https://fogforest.cn-sh2.ufileos.com/BLOG/live2d_api/"
-		});
+Promise.all([
+	loadExternalResource(live2d_path + "waifu.min.css", "css"),
+	loadExternalResource(live2d_path + "live2d.min.js", "js"),
+	loadExternalResource(live2d_path + "waifu-tips.js", "js")
+]).then(() => {
+	initWidget({
+		waifuPath: tips_path + "waifu-tips.min.json",
+		apiPath: "https://api.m1314.cn/live2d/",
+		cdnPath: "https://mogujun.cn-sh2.ufileos.com/live2d_api/"
 	});
+});
