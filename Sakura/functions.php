@@ -1958,7 +1958,7 @@ function shuoshuo_custom_init()
             'title',
             'editor',
             'author',
-			'comments'
+            'comments'
 
         )
     );
@@ -1967,14 +1967,15 @@ function shuoshuo_custom_init()
 add_action('init', 'shuoshuo_custom_init');
 
 //顶部老文章提示信息
-function old_content_message($content) {
-$modified = get_the_modified_time('U');
-$current = current_time('timestamp');
-$diffTime = ($current - $modified) / (60 * 60 * 24);
-if($diffTime > 365 && in_category(array(1,3,137,165)) ) {
-$content = '<div class="warn">本文最后更新于'.get_the_modified_time('Y年n月j日').
-'，已超过 1 年没更新！内容可能已失效，请自行测试，失效请评论区反馈，谢谢啦~</div>'.$content;
-}
-return $content;
+function old_content_message($content)
+{
+    $modified = get_the_modified_time('U');
+    $current = current_time('timestamp');
+    $diffTime = ($current - $modified) / (60 * 60 * 24);
+    if ($diffTime > 365 && in_category(array(1, 3, 137, 165))) {
+        $content = '<div class="warn">本文最后更新于' . get_the_modified_time('Y年n月j日') .
+            '，已超过 1 年没更新！内容可能已失效，请自行测试，失效请评论区反馈，谢谢啦~</div>' . $content;
+    }
+    return $content;
 }
 add_filter('the_content', 'old_content_message');
