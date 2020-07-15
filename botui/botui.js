@@ -53,7 +53,7 @@
         if (res.value == "gg") {
             return botui.message.bot({
                 delay: 1500,
-                content: "![告辞](https://ae01.alicdn.com/kf/Hd33fe77ff56f48e4b988d6c4f9091551S.jpg)"
+                content: "![](https://cdn.jsdelivr.net/gh/Fog-Forest/Picture-Bed/IMG/20200715120501.jpg)"
             })
         }
     });
@@ -65,7 +65,7 @@
         }).then(function() {
             return botui.message.bot({
                 delay: 1500,
-                content: "是个正在学习的运维工程师，业余Coder"
+                content: "是个正在学习的小运维，业余Coder"
             })
         }).then(function() {
             return botui.message.bot({
