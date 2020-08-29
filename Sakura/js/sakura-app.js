@@ -2041,7 +2041,7 @@ function loadBotui() {
 		if (mashiro_global.variables.has_bot_ui) {
 			bot_ui_ini()
 		} else {
-			$.getScript('https://cdn.jsdelivr.net/gh/Fog-Forest/cdn@2.1.2/botui/botui.js',
+			$.getScript('https://cdn.jsdelivr.net/gh/Fog-Forest/cdn@2.1.4/botui/botui.js',
 			function() {
 				bot_ui_ini();
 				mashiro_global.variables.has_bot_ui = true
