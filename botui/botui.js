@@ -27,7 +27,7 @@
     }).then(function() {
         return botui.message.bot({
             delay: 1000,
-            content: "我是 蘑菇君🍄"
+            content: "我是 Mario，你也可以叫我蘑菇君🍄"
         })
     }).then(function() {
         return botui.message.bot({
@@ -53,7 +53,7 @@
         if (res.value == "gg") {
             return botui.message.bot({
                 delay: 1500,
-                content: "![](https://cdn.jsdelivr.net/gh/Fog-Forest/Picture-Bed/IMG/20200715120501.jpg)"
+                content: "![](https://view.amogu.cn/images/2020/08/30/sanlian.jpg)"
             })
         }
     });

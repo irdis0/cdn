@@ -8646,7 +8646,7 @@ h1[id*=toc-head]::before,h2[id*=toc-head]::before,h3[id*=toc-head]::before,h4[id
 #banner_wave_1 {
 	width: auto;
 	height: 65px;
-	background: url(https://cdn.jsdelivr.net/gh/Fog-Forest/Picture-Bed/IMG/wave_1.png) repeat-x;
+	background: url(https://view.amogu.cn/images/2020/08/30/wave_1.png) repeat-x;
 	_filter: alpha(opacity=80);
 	position: absolute;
 	bottom: 0;
@@ -8666,7 +8666,7 @@ h1[id*=toc-head]::before,h2[id*=toc-head]::before,h3[id*=toc-head]::before,h4[id
 #banner_wave_2 {
 	width: auto;
 	height: 80px;
-	background: url(https://cdn.jsdelivr.net/gh/Fog-Forest/Picture-Bed/IMG/wave_2.png) repeat-x;
+	background: url(https://view.amogu.cn/images/2020/08/30/wave_2.png) repeat-x;
 	_filter: alpha(opacity=80);
 	position: absolute;
 	bottom: 0;
