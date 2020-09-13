@@ -34,7 +34,7 @@ Promise.all([
 ]).then(() => {
 	initWidget({
 		waifuPath: tips_path + "waifu-tips.min.json",
-		apiPath: "https://api.m1314.cn/live2d/",
-		cdnPath: "https://mogujun.cn-sh2.ufileos.com/live2d_api/"
+		apiPath: "https://api.m1314.cn/api/live2d/",
+		//cdnPath: ""
 	});
 });
