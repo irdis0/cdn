@@ -35,6 +35,6 @@ Promise.all([
 	initWidget({
 		waifuPath: tips_path + "waifu-tips.min.json",
 		apiPath: "https://api.amogu.cn/api/live2d/",
-		//cdnPath: ""
+		cdnPath: "api"
 	});
 });
